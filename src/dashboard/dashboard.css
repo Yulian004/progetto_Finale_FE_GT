@@ -1,0 +1,232 @@
+/* RESET */
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #f4f6f9;
+}
+
+
+
+/* CONTAINER */
+.container {
+    padding: 30px;
+}
+
+/* FILTRI */
+.filters {
+    margin-bottom: 20px;
+}
+
+.filters select {
+    padding: 8px;
+    border-radius: 6px;
+    margin-right: 10px;
+}
+
+/* TOP BAR */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* BUTTON */
+.primary-btn {
+    background: #2563EB;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.primary-btn:hover {
+    opacity: 0.9;
+}
+
+/* TASK LIST */
+.task-list-section {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* TABLE */
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.task-table th,
+.task-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+}
+
+.task-table th {
+    background: #f1f1f1;
+}
+
+/* BOTTONI AZIONE */
+.task-table button {
+    margin-right: 5px;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.task-table button:first-child {
+    background: orange;
+    color: white;
+}
+
+.task-table button:last-child {
+    background: red;
+    color: white;
+}
+
+/* CHECKBOX */
+.task-table input[type="checkbox"] {
+    transform: scale(1.2);
+    margin-right: 8px;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.5);
+
+    justify-content: center;
+    align-items: center;
+}
+
+/* MODAL BOX */
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    width: 350px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+
+    animation: fadeIn 0.3s ease;
+}
+
+/* ANIMAZIONE */
+@keyframes fadeIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+    float: right;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* FORM */
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* PRIORITÀ COLORI */
+td:nth-child(5) {
+    font-weight: bold;
+}
+
+
+/* HEADER */
+.header {
+    background: #2563EB;
+    color: white;
+    padding: 15px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* HEADER MODERNO */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #2563EB;
+    color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 6px 10px;
+    border-radius: 999px; /* pill moderna */
+    backdrop-filter: blur(6px);
+}
+
+#usernameDisplay {
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 4px 8px;
+}
+
+/* bottone logout moderno */
+.logout-btn {
+    background: white;
+    color: #2563EB;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.logout-btn:hover {
+    transform: translateY(-1px);
+    background: #e0e7ff;
+}
+
+#usernameDisplay::first-letter {
+    text-transform: uppercase;
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow Dashboard</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+
+    <script src="../utils/storage.js" defer></script>
+    <script src="dashboard.js" defer></script>
+</head>
+
+<body onload="checkAuth()">
+
+    <!-- HEADER -->
+    <header class="header">
+        <h1>TaskFlow Dashboard</h1>
+        <div class="userInfo">
+        <span id="usernameDisplay"></span>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </header>
+
+    <!-- CONTENUTO -->
+    <main class="container">
+
+        <!-- FILTRI -->
+        <div class="filters">
+            <select id="filterPriority" onchange="applyFilters()">
+                <option value="">Tutte le priorità</option>
+                <option value="LOW">Bassa</option>
+                <option value="MEDIUM">Media</option>
+                <option value="HIGH">Alta</option>
+            </select>
+
+            <select id="filterStatus" onchange="applyFilters()">
+                <option value="">Tutti</option>
+                <option value="true">Completati</option>
+                <option value="false">Non completati</option>
+            </select>
+        </div>
+
+        <!-- LISTA TASK -->
+        <section class="task-list-section">
+
+            <div class="top-bar">
+                <h2>I tuoi Task</h2>
+                <button id="openModal" class="primary-btn" onclick="openCreateModal()">
+                    + Aggiungi Task
+                </button>
+            </div>
+
+            <table class="task-table">
+                <thead>
+                    <tr>
+                        <th>Titolo</th>
+                        <th>Descrizione</th>
+                        <th>Creato</th>
+                        <th>Scadenza</th>
+                        <th>Priorità</th>
+                        <th>Stato</th>
+                        <th>Azioni</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tableBody"></tbody>
+            </table>
+
+        </section>
+
+    </main>
+
+    <!-- MODAL -->
+    <div id="taskModal" class="modal">
+
+        <div class="modal-content">
+
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+
+            <h2 id="modalTitle">Nuovo Task</h2>
+
+            <form id="taskForm">
+
+                <label>Titolo</label>
+                <input type="text" id="title" required>
+
+                <label>Descrizione</label>
+                <textarea id="description"></textarea>
+
+                <label>Data creazione</label>
+                <input type="date" id="creationTimestamp" readonly>
+
+                <label>Scadenza</label>
+                <input type="date" id="deadlineTimestamp" required>
+
+                <label>Priorità</label>
+                <select id="priority">
+                    <option value="LOW">Bassa</option>
+                    <option value="MEDIUM">Media</option>
+                    <option value="HIGH">Alta</option>
+                </select>
+
+                <button type="submit" class="primary-btn">
+                    Salva Task
+                </button>
+                <button type="reset" class="primary-btn">
+                    Reset
+                </button>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

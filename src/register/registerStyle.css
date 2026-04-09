@@ -1,0 +1,118 @@
+/* reset base */
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: #2563EB;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* contenitore */
+.container {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 320px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* titolo */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* label */
+label {
+  font-size: 0.9rem;
+}
+
+/* input */
+input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #2563EB;
+}
+
+/* password wrapper */
+.passwordWrapper {
+  position: relative;
+}
+
+.passwordWrapper input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+#show-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  opacity: 1;
+}
+
+#show-password img {
+  width: 20px;
+  height: 20px;
+  opacity: 1;
+}
+
+/* bottoni */
+.button {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* bottone register */
+.button[type="submit"] {
+  background: #4facfe;
+  color: white;
+}
+
+/* bottone reset */
+.button[type="reset"] {
+  background: #eee;
+}
+
+/* hover */
+.button:hover {
+  opacity: 0.9;
+}
+
+.register-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #2563EB;
+    text-decoration: none;
+    font-weight: bold;
+}

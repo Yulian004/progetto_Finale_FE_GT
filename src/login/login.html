@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="loginStyle.css">
+    <script src="../utils/storage.js" defer></script>
+    <script src="loginScript.js" defer></script>
+</head>
+<body>
+
+    <div class="container">
+        <form onsubmit="login(event)">
+            <h1>Login</h1>
+
+            <label>
+                <span>Username</span>
+            </label>
+            <input type="email" name="email" id="email" placeholder="Enter Email" required>
+            <label>
+                <span>Password</span>
+            </label>
+            <div class="passwordWrapper">
+            <input type="password" name="password" id="password" placeholder="Enter Password" required>
+            <button type="button" id="show-password">
+                <img src="../assets/mostra.svg" alt="Mostra Password">
+            </button>
+            </div><br>
+
+             <button class="button" type="submit">Login</button>
+        </form>
+        <p class="register-link">
+            Non sei registrato?
+            <a href="../register/register.html">Registrati</a>
+        </p>
+        <div id="messageBox" class="message-box hidden"></div>
+
+
+    </div>
+    
+</body>
+</html>
