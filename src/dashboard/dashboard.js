@@ -1,5 +1,6 @@
 let tasks = [];
 let editingTaskId = null;
+let taskToDelete = null;
 
 window.onload = () => {
     checkAuth();
@@ -50,7 +51,7 @@ function renderTasks(filteredTasks = tasks){
             </td>
             <td>
                 <button class="edit" onclick="openEditModal(${task.id})">Edit</button>
-                <button class="delete" onclick="deleteTask(${task.id})">Delete</button>
+                <button class="delete" onclick="openDeleteModal(${task.id})">Delete</button>
             </td> `;
 
             tbody.appendChild(riga);
@@ -88,14 +89,16 @@ async function updateTask(id, updateTask)
 }
 
 //DELETE
-async function deleteTask(id){
-    if(!confirm("Sei sicuro di eliminare questo task?")) return;
+async function deleteTask(){
+    if(!taskToDelete) return;
 
-    await fetch(`${API_URL}/${id}`, {
+    await fetch(`${API_URL}/${taskToDelete}`, {
         method: "DELETE"
     });
 
-    tasks = tasks.filter(t => t.id !== id);
+    tasks = tasks.filter(t => t.id !== taskToDelete);
+
+    closeDeleteModal();
     renderTasks();
 }
 //TOGGLE STATUS TRUE/FALSE
@@ -174,7 +177,17 @@ function dataCreazione(){
     creationData.value = formatDate;
 }
 
+function setDeadlineMinima()
+{
+    const deadline = document.querySelector("#deadlineTimestamp")
+    const oggi = new Date();
 
+    const yyyy = oggi.getFullYear();
+    const mm = String(oggi.getMonth() + 1).padStart(2, "0");
+    const dd = String(oggi.getDate()).padStart(2, "0");
+
+    deadline.min = `${yyyy}-${mm}-${dd}`;
+}
 
 
 //------------------------------------------------------------------------------------------
@@ -202,6 +215,18 @@ function closeModal(){
     document.getElementById("taskModal").style.display = "none";
 }
 
+function openDeleteModal(id)
+{
+    taskToDelete = id
+    document.getElementById("deleteModal").style.display = "flex";
+}
+
+function closeDeleteModal()
+{
+    taskToDelete = null;
+    document.getElementById("deleteModal").style.display = "none";
+}
+
 //--------------------------------------------------------------------------------------------
 // Modifica e creazione con un solo Modal
 function openEditModal(id)
@@ -214,10 +239,13 @@ function openEditModal(id)
 
     document.querySelector("#title").value = task.title;
     document.querySelector("#description").value = task.description;
-    document.querySelector("#creationTimestamp").value = task.creationTimestamp;
+    const creationData = new Date(task.creationTimestamp).toISOString().split("T")[0];
+
+    document.querySelector("#creationTimestamp").value = creationData;
     document.querySelector("#deadlineTimestamp").value = task.deadlineTimestamp;
     document.querySelector("#priority").value = task.priority;
 
+    setDeadlineMinima();
     openModal();
 }
 
@@ -227,6 +255,7 @@ function openCreateModal()
 
     resetForm();
     dataCreazione();
+    setDeadlineMinima();
 
     document.getElementById("modalTitle").innerText = "Nuovo Task";
 

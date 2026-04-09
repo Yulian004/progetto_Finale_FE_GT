@@ -116,3 +116,14 @@ input:focus {
     text-decoration: none;
     font-weight: bold;
 }
+
+.error-msg {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.success-msg {
+    color: green;
+    font-size: 0.9rem;
+}

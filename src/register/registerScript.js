@@ -26,36 +26,52 @@ async function register(event){
     const password = document.getElementById("password").value;
 
     try{
-    const response = await fetch(`${API_URL}/register`,{
-        
-        method: "POST",
+        const response = await fetch(`${API_URL}/register`,{
+            
+            method: "POST",
 
-        headers: {
-            "Content-Type": "application/json"
-        },
+            headers: {
+                "Content-Type": "application/json"
+            },
 
-        body: JSON.stringify({
-            username,
-            email,
-            password
-        })
+            body: JSON.stringify({
+                username,
+                email,
+                password
+            })
 
     });
 
-    if(!response.ok)
-        throw new Error("Errore registrazione");
+    const data = await response.json();
 
-    alert("Registrazione completata");
+    if(!response.ok){
+        showError(data.message || "Errore registrazione")
+        return;
+    }
+
 
     window.location.href = "../login/login.html";
 
     }
     catch(error)
     {
-        alert("Registrazione fallita");
-
+        showError("abudabi");
         console.error(error);
     }
 
 
 }
+
+function showError(message)
+{
+    const error = document.getElementById("message")
+    error.className = "error-msg";
+    error.innerText = message;
+}
+
+/* function showSuccess(message)
+{
+    const error = document.getElementById("message")
+    error.className = "success-msg";
+    error.innerText = message;
+} */

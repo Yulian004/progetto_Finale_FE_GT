@@ -230,3 +230,12 @@ td:nth-child(5) {
 #usernameDisplay::first-letter {
     text-transform: uppercase;
 }
+
+.delete-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
